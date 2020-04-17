@@ -93,25 +93,25 @@
     <section class="shipping_details section_padding">
         <div class="container">
             <div class="row">
-                <div class="col-lg-3 col-sm-6">
+                <div class="col-6 col-lg-3 col-sm-6">
                     <div class="single_shopping_details">
                         <i class="fas fa-cart-plus"></i>
                         <h4>Selecciona productos</h4>
                     </div>
                 </div>
-                <div class="col-lg-3 col-sm-6">
+                <div class="col-6 col-lg-3 col-sm-6">
                     <div class="single_shopping_details">
                         <i class="fas fa-shopping-bag"></i>
                         <h4>Revisa tu bolson</h4>
                     </div>
                 </div>
-                <div class="col-lg-3 col-sm-6">
+                <div class="col-6 col-lg-3 col-sm-6">
                     <div class="single_shopping_details">
                         <i class="fas fa-cash-register"></i>
                         <h4>Confirma tu compra</h4>
                     </div>
                 </div>
-                <div class="col-lg-3 col-sm-6">
+                <div class="col-6 col-lg-3 col-sm-6">
                     <div class="single_shopping_details">
                         <i class="fas fa-shipping-fast"></i>
                         <h4>Espera el envio</h4>
@@ -166,9 +166,9 @@
                     <table class="table">
                         <thead>
                             <tr>
-                                <th scope="col">Product</th>
-                                <th scope="col">Price</th>
-                                <th scope="col">Quantity</th>
+                                <th scope="col">Producto</th>
+                                <th scope="col">Precio</th>
+                                <th scope="col">Cantidad</th>
                                 <th scope="col">Total</th>
                             </tr>
                         </thead>
@@ -349,17 +349,21 @@
         $(document).ready(function(){
             
             $(document).on("click","#carro", function(event) {
+                $( ".shipping_details" ).hide();
                 $( ".new_arrival" ).hide();
                 $( ".cart_area" ).show();
 
-                $('.cart_area').animate({ scrollTop : 0 }, 1000);
+                $('html, body').animate({ scrollTop : 0 }, 1000);
 
                 return false;
             });
 
             $(document).on("click","#continuarshop", function(event) {
                 $( ".cart_area" ).hide();
+                $( ".shipping_details" ).show();
                 $( ".new_arrival" ).show();
+
+                $('html, body').animate({ scrollTop : 0 }, 1000);
 
                 return false;
             });

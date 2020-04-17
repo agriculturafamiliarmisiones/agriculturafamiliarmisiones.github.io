@@ -195,7 +195,7 @@
                                     <h5>Envio a domicilio</h5>
                                 </td>
                                 <td>
-                                    <input type="checkbox" name="vehicle3" value="Boat" checked> $<span id="envio">100</span>
+                                    <input type="checkbox" id="envio" name="envio" value="1" checked> $<span id="envio">100</span>
                                 </td>
                             </tr>
                             <tr>
@@ -324,56 +324,102 @@
             
             $(document).on("click",".genric-btn", function(event) {
                 $( ".genric-btn" ).attr('disabled', 'disabled');
-                
-                /*
-                var prod = $(this).attr('id');
-                //console.log( prod );
+
                 var productos = Number($('#productos').val());
                 var v_productos = productos + 1;
                 $('#productos').val( Number(v_productos ));
-
                 $('body').append('<style>.main_menu .cart i:after {content: "'+v_productos+'";}</style>');
-                */
-
+    
+                //
                 var datos = $(this).attr('rel');
                 var partes = datos.split("|");
 
-                var total = partes[3]*1;
+                //
+                var encontro = 0;
+                $("#lista-compra tbody tr").each(function (index) {
 
-                var contenido = '';
-                contenido +='<tr>';
-                contenido +='                <td>';
-                contenido +='                    <div class="media">';
-                contenido +='                        <div class="d-flex">';
-                contenido +='                            <img src="img/'+partes[1]+'" alt="" />';
-                contenido +='                        </div>';
-                contenido +='                        <div class="media-body">';
-                contenido +='                            <p>'+partes[2]+'</p>';
-                contenido +='                        </div>';
-                contenido +='                    </div>';
-                contenido +='                </td>';
-                contenido +='                <td>';
-                contenido +='                    <h5>$'+partes[3]+'</h5>';
-                contenido +='                </td>';
-                contenido +='                <td>';
-                contenido +='                    <div id="cart-prod-'+partes[0]+'" class="product_count">';
-                contenido +='                        <span class="input-number-decrement"> <i class="ti-minus"></i></span>';
-                contenido +='                        <input class="input-number" type="text" value="1" min="0" max="2">';
-                contenido +='                        <span class="input-number-increment"> <i class="ti-plus"></i></span>';
-                contenido +='                    </div>';
-                contenido +='                </td>';
-                contenido +='                <td>';
-                contenido +='                    <h5>$'+total+'</h5>';
-                contenido +='                </td>';
-                contenido +='            </tr>';
+                    var tr_id = $(this).attr('id').replace('id-','');
 
-                $('#lista-compra').append( contenido );
+                    if ( tr_id === partes[0] ) {
+                        encontro = 1;
 
+                        var oldValue = Number( $('#cart-prod-'+partes[0]+' input').val() );
+                        var newVal = parseFloat(oldValue) + 1;
+                        $('#cart-prod-'+partes[0]+' input').val( newVal );
+                        
+                        var precio_cantidad = partes[3]*newVal;
+                        $('#total-cart-prod-'+partes[0]).html( precio_cantidad );
+                    } 
+                });
+
+                if ( encontro == 0) {
+                    var precio_cantidad = partes[3]*1;
+                    var contenido = '';
+                    contenido +='<tr id="id-'+partes[0]+'">';
+                    contenido +='                <td>';
+                    contenido +='                    <div class="media">';
+                    contenido +='                        <div class="d-flex">';
+                    contenido +='                            <img src="img/'+partes[1]+'" alt="" />';
+                    contenido +='                        </div>';
+                    contenido +='                        <div class="media-body">';
+                    contenido +='                            <p>'+partes[2]+'</p>';
+                    contenido +='                        </div>';
+                    contenido +='                    </div>';
+                    contenido +='                </td>';
+                    contenido +='                <td>';
+                    contenido +='                    <h5 id="precio-cart-prod-'+partes[0]+'" rel="'+partes[3]+'">$'+partes[3]+'</h5>';
+                    contenido +='                </td>';
+                    contenido +='                <td>';
+                    contenido +='                    <div id="cart-prod-'+partes[0]+'" class="product_count">';
+                    contenido +='                        <span class="input-number-decrement"> <i class="ti-minus"></i></span>';
+                    contenido +='                        <input class="input-number" type="text" value="1" min="0" max="2">';
+                    contenido +='                        <span class="input-number-increment"> <i class="ti-plus"></i></span>';
+                    contenido +='                    </div>';
+                    contenido +='                </td>';
+                    contenido +='                <td>';
+                    contenido +='                    <h5>$ <span id="total-cart-prod-'+partes[0]+'">'+precio_cantidad+'</span></h5>';
+                    contenido +='                </td>';
+                    contenido +='            </tr>';
+                    $('#lista-compra').append( contenido );                    
+                }
+
+                //
+                var subtotal = 0;
+                $("#lista-compra tbody tr").each(function (index) {
+                    var tr_id = $(this).attr('id').replace('id-','');
+                    var precio = $('#precio-cart-prod-'+tr_id).attr('rel');
+                    var cantidad = Number( $('#cart-prod-'+tr_id+' input').val() );
+                    
+                    subtotal = subtotal + (precio*cantidad);
+                });
+                $('#subtotal').html( subtotal );
+
+                var total = subtotal;
+                if ($('#envio').is(':checked')) {
+                    total = total + 100;
+                }
+                $('#total').html( total );
 
                 $( ".genric-btn" ).removeAttr('disabled');
-
             });
 
+            $("#envio").change(function () {
+                var subtotal = 0;
+                $("#lista-compra tbody tr").each(function (index) {
+                    var tr_id = $(this).attr('id').replace('id-','');
+                    var precio = $('#precio-cart-prod-'+tr_id).attr('rel');
+                    var cantidad = Number( $('#cart-prod-'+tr_id+' input').val() );
+                    
+                    subtotal = subtotal + (precio*cantidad);
+                });
+                $('#subtotal').html( subtotal );
+                //
+                var total = subtotal;
+                if ($('#envio').is(':checked')) {
+                    total = total + 100;
+                }
+                $('#total').html( total );
+            }).change();
 
         });
 

@@ -131,23 +131,23 @@
                     <div class="new_arrival_iner filter-container">
                         <div class="single_arrivel_item1 weidth_3 mix">
                             <img src="img/combo 1.jpeg" alt="#">
-                            <a id="prod-1" class="genric-btn success medium"><i class="fas fa-cart-plus"></i> COMPAR</a>
+                            <a id="prod-1" rel="1|combo 1.jpeg|COMBO 1|501" class="genric-btn success medium"><i class="fas fa-cart-plus"></i> COMPAR</a>
                         </div>
                         <div class="single_arrivel_item1 weidth_3 mix">
                             <img src="img/combo 2.jpeg" alt="#">
-                            <a id="prod-2" class="genric-btn success medium"><i class="fas fa-cart-plus"></i> COMPAR</a>
+                            <a id="prod-2" rel="2|combo 2.jpeg|COMBO 2|502" class="genric-btn success medium"><i class="fas fa-cart-plus"></i> COMPAR</a>
                         </div>
                         <div class="single_arrivel_item1 weidth_3 mix" >
                             <img src="img/combo 3.jpeg" alt="#">
-                            <a id="prod-3" class="genric-btn success medium"><i class="fas fa-cart-plus"></i> COMPAR</a>
+                            <a id="prod-3" rel="3|combo 3.jpeg|COMBO 3|503" class="genric-btn success medium"><i class="fas fa-cart-plus"></i> COMPAR</a>
                         </div>
                         <div class="single_arrivel_item1 weidth_3 mix">
                             <img src="img/combo 4.jpeg" alt="#">
-                            <a id="prod-4" class="genric-btn success medium"><i class="fas fa-cart-plus"></i> COMPAR</a>
+                            <a id="prod-4" rel="4|combo4.jpeg|COMBO 1|504" class="genric-btn success medium"><i class="fas fa-cart-plus"></i> COMPAR</a>
                         </div>
                         <div class="single_arrivel_item1 weidth_3 mix">
                             <img src="img/combo 5.jpeg" alt="#">
-                            <a id="prod-5" class="genric-btn success medium"><i class="fas fa-cart-plus"></i> COMPAR</a>
+                            <a id="prod-5" rel="5|combo 5.jpeg|COMBO 5|505" class="genric-btn success medium"><i class="fas fa-cart-plus"></i> COMPAR</a>
                         </div>
                     </div>
                     <input type="hidden" id="productos" name="productos" value="0">
@@ -163,7 +163,7 @@
         <div class="container">
             <div class="cart_inner">
                 <div class="table-responsive">
-                    <table class="table">
+                    <table class="table" id="lista-compra">
                         <thead>
                             <tr>
                                 <th scope="col">Producto</th>
@@ -172,57 +172,12 @@
                                 <th scope="col">Total</th>
                             </tr>
                         </thead>
+                        
                         <tbody>
-                            <tr>
-                                <td>
-                                    <div class="media">
-                                        <div class="d-flex">
-                                            <img src="img/combo 1.jpeg" alt="" />
-                                        </div>
-                                        <div class="media-body">
-                                            <p>Minimalistic shop for multipurpose use</p>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>
-                                    <h5>$360.00</h5>
-                                </td>
-                                <td>
-                                    <div id="cart-prod-1" class="product_count">
-                                        <span class="input-number-decrement"> <i class="ti-minus"></i></span>
-                                        <input class="input-number" type="text" value="1" min="0" max="2">
-                                        <span class="input-number-increment"> <i class="ti-plus"></i></span>
-                                    </div>
-                                </td>
-                                <td>
-                                    <h5>$720.00</h5>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div class="media">
-                                        <div class="d-flex">
-                                            <img src="img/combo 1.jpeg" alt="" />
-                                        </div>
-                                        <div class="media-body">
-                                            <p>Minimalistic shop for multipurpose use</p>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>
-                                    <h5>$360.00</h5>
-                                </td>
-                                <td>
-                                    <div id="cart-prod-2" class="product_count">
-                                        <span class="input-number-decrement"> <i class="ti-minus"></i></span>
-                                        <input class="input-number" type="text" value="1" min="0" max="3">
-                                        <span class="input-number-increment"> <i class="ti-plus"></i></span>
-                                    </div>
-                                </td>
-                                <td>
-                                    <h5>$720.00</h5>
-                                </td>
-                            </tr>
+
+                        </tbody>
+
+                        <tfoot>
                             <tr>
                                 <td></td>
                                 <td></td>
@@ -230,7 +185,7 @@
                                     <h5>Subtotal</h5>
                                 </td>
                                 <td>
-                                    <h5>$2160.00</h5>
+                                    <h5>$<span id="subtotal">#</span></h5>
                                 </td>
                             </tr>
                             <tr class="shipping_area">
@@ -240,8 +195,7 @@
                                     <h5>Envio a domicilio</h5>
                                 </td>
                                 <td>
-                                        <input type="checkbox" name="vehicle3" value="Boat" checked> $100.00
-          
+                                    <input type="checkbox" name="vehicle3" value="Boat" checked> $<span id="envio">100</span>
                                 </td>
                             </tr>
                             <tr>
@@ -251,14 +205,14 @@
                                     <h5>TOTAL</h5>
                                 </td>
                                 <td>
-                                    <h5>$2160.00</h5>
+                                    <h5>$<span id="total">#</span></h5>
                                 </td>
                             </tr>
-                        </tbody>
+                        </tfoot>
                     </table>
                     <div class="checkout_btn_inner float-right">
-                        <a class="btn_1" href="#" id="continuarshop">Continuar comprando</a>
-                        <a class="btn_1 checkout_btn_1" href="#">Confirmar compra</a>
+                        <a class="btn_1" href="#" id="continuarshop"><i class="fas fa-cart-plus"></i> Continuar comprando</a>
+                        <a class="btn_1 checkout_btn_1" href="#"><i class="fas fa-cash-register"></i> Confirmar compra</a>
                     </div>
                 </div>
             </div>
@@ -280,8 +234,7 @@
                     </div>
                 </div>
                 <div class="col-sm-6 col-lg-2">
-                    <div class="single_footer_part">>
-                    </div>
+                    <div class="single_footer_part"></div>
                 </div>
                 <div class="col-sm-6 col-lg-3">
                     <div class="single_footer_part">
@@ -308,7 +261,7 @@
             <div class="row justify-content-center">
                 <div class="col-lg-12">
                     <div class="copyright_text">
-                        <P>Copyright &copy;<script>document.write(new Date().getFullYear());</script> <a target="_blank" href="https://mauriciomss.github.io/">mauriciomss</a></P>
+                        <P>Desarrollado por <a target="_blank" href="https://mauriciomss.github.io/">mauriciomss</a> <script>document.write(new Date().getFullYear());</script></P>
                     </div>
                 </div>
             </div>
@@ -369,12 +322,10 @@
             });
 
             
-
-
-
             $(document).on("click",".genric-btn", function(event) {
                 $( ".genric-btn" ).attr('disabled', 'disabled');
                 
+                /*
                 var prod = $(this).attr('id');
                 //console.log( prod );
                 var productos = Number($('#productos').val());
@@ -382,10 +333,46 @@
                 $('#productos').val( Number(v_productos ));
 
                 $('body').append('<style>.main_menu .cart i:after {content: "'+v_productos+'";}</style>');
+                */
+
+                var datos = $(this).attr('rel');
+                var partes = datos.split("|");
+
+                var total = partes[3]*1;
+
+                var contenido = '';
+                contenido +='<tr>';
+                contenido +='                <td>';
+                contenido +='                    <div class="media">';
+                contenido +='                        <div class="d-flex">';
+                contenido +='                            <img src="img/'+partes[1]+'" alt="" />';
+                contenido +='                        </div>';
+                contenido +='                        <div class="media-body">';
+                contenido +='                            <p>'+partes[2]+'</p>';
+                contenido +='                        </div>';
+                contenido +='                    </div>';
+                contenido +='                </td>';
+                contenido +='                <td>';
+                contenido +='                    <h5>$'+partes[3]+'</h5>';
+                contenido +='                </td>';
+                contenido +='                <td>';
+                contenido +='                    <div id="cart-prod-'+partes[0]+'" class="product_count">';
+                contenido +='                        <span class="input-number-decrement"> <i class="ti-minus"></i></span>';
+                contenido +='                        <input class="input-number" type="text" value="1" min="0" max="2">';
+                contenido +='                        <span class="input-number-increment"> <i class="ti-plus"></i></span>';
+                contenido +='                    </div>';
+                contenido +='                </td>';
+                contenido +='                <td>';
+                contenido +='                    <h5>$'+total+'</h5>';
+                contenido +='                </td>';
+                contenido +='            </tr>';
+
+                $('#lista-compra').append( contenido );
+
 
                 $( ".genric-btn" ).removeAttr('disabled');
-            });
 
+            });
 
 
         });

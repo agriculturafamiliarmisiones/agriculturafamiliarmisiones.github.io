@@ -59,7 +59,9 @@
             <div class="row align-items-center justify-content-center">
                 <div class="col-lg-11">
                     <nav class="navbar navbar-expand-lg navbar-light">
-                        <a class="navbar-brand" href="index.html"> <img src="img/logo-tienda-familiar-blanco.png" alt="logo"> </a>
+                        <a class="navbar-brand" href="" id="inicio"> 
+                            <img src="img/logo-tienda-familiar-blanco.png" alt="logo">
+                        </a>
                         <button class="navbar-toggler" type="button" data-toggle="collapse"
                             data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                             aria-expanded="false" aria-label="Toggle navigation">
@@ -74,14 +76,30 @@
                             </ul>
                         </div>
 
-                        <div class="hearer_icon d-flex">
+                        <!--<div class="hearer_icon d-flex">
                             <div class="cart">
                                 <a href="" id="carro">
                                     <i class="ti-bag"></i>
                                 </a>
                             </div>
+                        </div>-->
+
+                        <div class="hearer_icon d-flex">
+                            <div class="dropdown cart">
+                                <a class="dropdown-toggle" href="" id="navbarDropdown3" role="button"
+                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <i class="ti-bag"></i>
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <div class="single_product">
+                                        <ul>
+                                        </ul>
+                                        <a href="" id="carro" class="genric-btn success small">Ver mi bolson</a>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        
+
                     </nav>
                 </div>
             </div>
@@ -123,7 +141,7 @@
     <!-- free shipping end -->
 
     <!-- new arrival part here -->
-    <section class="new_arrival ">
+    <section class="new_arrival">
 
         <div class="container-fluid">
             <div class="row">
@@ -131,23 +149,23 @@
                     <div class="new_arrival_iner filter-container">
                         <div class="single_arrivel_item1 weidth_3 mix">
                             <img src="img/combo 1.jpeg" alt="#">
-                            <a id="prod-1" rel="1|combo 1.jpeg|COMBO 1|501" class="genric-btn success medium"><i class="fas fa-cart-plus"></i> COMPAR</a>
+                            <a id="prod-1" rel="1|combo 1.jpeg|COMBO 1|501" class="genric-btn success e-large COMPRAR"><i class="fas fa-cart-plus"></i> COMPRAR</a>
                         </div>
                         <div class="single_arrivel_item1 weidth_3 mix">
                             <img src="img/combo 2.jpeg" alt="#">
-                            <a id="prod-2" rel="2|combo 2.jpeg|COMBO 2|502" class="genric-btn success medium"><i class="fas fa-cart-plus"></i> COMPAR</a>
+                            <a id="prod-2" rel="2|combo 2.jpeg|COMBO 2|502" class="genric-btn success e-large COMPRAR"><i class="fas fa-cart-plus"></i> COMPRAR</a>
                         </div>
                         <div class="single_arrivel_item1 weidth_3 mix" >
                             <img src="img/combo 3.jpeg" alt="#">
-                            <a id="prod-3" rel="3|combo 3.jpeg|COMBO 3|503" class="genric-btn success medium"><i class="fas fa-cart-plus"></i> COMPAR</a>
+                            <a id="prod-3" rel="3|combo 3.jpeg|COMBO 3|503" class="genric-btn success e-large COMPRAR"><i class="fas fa-cart-plus"></i> COMPRAR</a>
                         </div>
                         <div class="single_arrivel_item1 weidth_3 mix">
                             <img src="img/combo 4.jpeg" alt="#">
-                            <a id="prod-4" rel="4|combo4.jpeg|COMBO 1|504" class="genric-btn success medium"><i class="fas fa-cart-plus"></i> COMPAR</a>
+                            <a id="prod-4" rel="4|combo 4.jpeg|COMBO 4|504" class="genric-btn success e-large COMPRAR"><i class="fas fa-cart-plus"></i> COMPRAR</a>
                         </div>
                         <div class="single_arrivel_item1 weidth_3 mix">
                             <img src="img/combo 5.jpeg" alt="#">
-                            <a id="prod-5" rel="5|combo 5.jpeg|COMBO 5|505" class="genric-btn success medium"><i class="fas fa-cart-plus"></i> COMPAR</a>
+                            <a id="prod-5" rel="5|combo 5.jpeg|COMBO 5|505" class="genric-btn success e-large COMPRAR"><i class="fas fa-cart-plus"></i> COMPRAR</a>
                         </div>
                     </div>
                     <input type="hidden" id="productos" name="productos" value="0">
@@ -216,8 +234,67 @@
                     </div>
                 </div>
             </div>
-        </section>
-        <!--================End Cart Area =================-->
+        </div>
+    </section>
+    <!--================End Cart Area =================-->
+
+
+    <!--================Checkout Area =================-->
+    <section class="checkout_area section_padding" style="display: none;">
+        <div class="container">
+            <div class="billing_details">
+                <div class="row">
+                    <div class="col-lg-8">
+                        <h3>Datos para la compra</h3>
+                        <input type="hidden" class="form-control" id="compra" name="compra" />
+
+                        <form class="row contact_form" action="http://localhost/tienda/confirmar/" method="post" novalidate="novalidate">
+                            <div class="col-md-12 form-group p_star">
+                                <input type="text" class="form-control" id="dni" name="dni" />
+                                <span class="placeholder" data-placeholder="NÚMERO DE DNI"></span>
+                            </div>
+                            <div class="col-md-6 form-group p_star">
+                                <input type="text" class="form-control" id="apellido" name="apellido" />
+                                <span class="placeholder" data-placeholder="APELLIDO"></span>
+                            </div>
+                            <div class="col-md-6 form-group p_star">
+                                <input type="text" class="form-control" id="nombre" name="nombre" />
+                                <span class="placeholder" data-placeholder="NOMBRE"></span>
+                            </div>
+
+                            <div class="col-md-6 form-group p_star">
+                                <input type="text" class="form-control" id="celular" name="celular" />
+                                <span class="placeholder" data-placeholder="NÚMERO DE CELULAR"></span>
+                            </div>
+                            <div class="col-md-6 form-group p_star">
+                                <input type="text" class="form-control" id="email" name="email" />
+                                <span class="placeholder" data-placeholder="CORREO ELECTRÓNICO"></span>
+                            </div>
+
+                            <div class="col-md-6 form-group p_star">
+                                <input type="text" class="form-control" id="direccion" name="direccion" />
+                                <span class="placeholder" data-placeholder="DIRECCIÓN (Calle y Altura)"></span>
+                            </div>
+                            <div class="col-md-6 form-group p_star">
+                                mapa
+                            </div>
+
+                        </form>
+                    </div>
+
+                    <div class="col-lg-4">
+                        <div class="order_box">
+                            <h2>Tu orden</h2>
+                            <ul class="list" id="list"></ul>
+                            <ul class="list list_2" id="list_2"></ul>
+                            <a class="btn_3" href="#"> CONFIRMAR PEDIDO</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--================End Checkout Area =================-->
 
 
     <!--::footer_part start::-->
@@ -296,14 +373,29 @@
     <!-- custom js -->
     <script src="js/custom.js"></script>
 
+    <Link rel = "stylesheet" href = "// code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
+    <Script src = "//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+
 
     <script type="text/javascript">
         
         $(document).ready(function(){
             
+            $(document).on("click","#inicio", function(event) {
+                $( ".cart_area" ).hide();
+                $( ".checkout_area" ).hide();
+                $( ".shipping_details" ).show();
+                $( ".new_arrival" ).show();
+
+                $('html, body').animate({ scrollTop : 0 }, 1000);
+
+                return false;
+            });
+
             $(document).on("click","#carro", function(event) {
                 $( ".shipping_details" ).hide();
                 $( ".new_arrival" ).hide();
+                $( ".checkout_area" ).hide();
                 $( ".cart_area" ).show();
 
                 $('html, body').animate({ scrollTop : 0 }, 1000);
@@ -313,6 +405,7 @@
 
             $(document).on("click","#continuarshop", function(event) {
                 $( ".cart_area" ).hide();
+                $( ".checkout_area" ).hide();
                 $( ".shipping_details" ).show();
                 $( ".new_arrival" ).show();
 
@@ -322,7 +415,7 @@
             });
 
             
-            $(document).on("click",".genric-btn", function(event) {
+            $(document).on("click",".COMPRAR", function(event) {
                 $( ".genric-btn" ).attr('disabled', 'disabled');
 
                 var productos = Number($('#productos').val());
@@ -359,10 +452,12 @@
                     contenido +='                <td>';
                     contenido +='                    <div class="media">';
                     contenido +='                        <div class="d-flex">';
-                    contenido +='                            <img src="img/'+partes[1]+'" alt="" />';
+                    contenido +='                            <a href="img/'+partes[1]+'" class="img-pop-up img-gal">';
+                    contenido +='                                <img src="img/'+partes[1]+'" alt="#">';
+                    contenido +='                            </a>';
                     contenido +='                        </div>';
                     contenido +='                        <div class="media-body">';
-                    contenido +='                            <p>'+partes[2]+'</p>';
+                    contenido +='                            <p id="nombre-cart-prod-'+partes[0]+'" rel="'+partes[2]+'">'+partes[2]+'</p>';
                     contenido +='                        </div>';
                     contenido +='                    </div>';
                     contenido +='                </td>';
@@ -380,7 +475,10 @@
                     contenido +='                    <h5>$ <span id="total-cart-prod-'+partes[0]+'">'+precio_cantidad+'</span></h5>';
                     contenido +='                </td>';
                     contenido +='            </tr>';
-                    $('#lista-compra').append( contenido );                    
+                    $('#lista-compra').append( contenido );
+
+                    //
+                    $('.single_product ul').append( '<li><img src="img/'+partes[1]+'" alt="#">'+partes[2]+' $'+partes[3]+'</li>' );
                 }
 
                 //
@@ -400,8 +498,11 @@
                 }
                 $('#total').html( total );
 
+                $( ".ti-bag" ).effect( "shake" );
+
                 $( ".genric-btn" ).removeAttr('disabled');
             });
+
 
             $("#envio").change(function () {
                 var subtotal = 0;
@@ -420,6 +521,48 @@
                 }
                 $('#total').html( total );
             }).change();
+
+
+            $(document).on("click",".checkout_btn_1", function(event) {
+
+                $( ".cart_area" ).hide();
+                $( ".shipping_details" ).hide();
+                $( ".new_arrival" ).hide();
+                $( ".checkout_area" ).show();
+
+                $('#list li').remove();
+                $('#list_2 li').remove();
+
+                $('#list').append( '<li><a href="#">Productos<span>Total</span></a></li>' );
+                var productos = '';
+                var subtotal = 0;
+                $("#lista-compra tbody tr").each(function (index) {
+                    var tr_id = $(this).attr('id').replace('id-','');
+                    var nombre = $('#nombre-cart-prod-'+tr_id).attr('rel');
+                    var precio = $('#precio-cart-prod-'+tr_id).attr('rel');
+                    var cantidad = Number( $('#cart-prod-'+tr_id+' input').val() );
+                    
+                    $('#list').append( '<li><a href="#">'+nombre+'<span class="middle">x '+cantidad+'</span><span class="last">$'+precio+'</span></a></li>' );
+
+                    subtotal = subtotal + (precio*cantidad);
+
+                    productos = productos + tr_id + '*' + cantidad + '|';
+                });
+                $('#compra').val( productos );
+
+                $('#list_2').append( '<li><a href="#">Subtotal<span>$'+subtotal+'</span></a></li>' );
+
+                //
+                var total = subtotal;
+                if ($('#envio').is(':checked')) {
+                    $('#list_2').append( '<li><a href="#">Envio<span>$100</span></a></li>' );
+                    total = total + 100;
+                }
+                $('#list_2').append( '<li><a href="#">Total<span>$'+total+'</span></a></li>' );
+
+            });
+
+
 
         });
 

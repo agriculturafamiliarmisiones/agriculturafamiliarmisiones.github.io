@@ -245,10 +245,7 @@
       function increment() {
         
         var value = el[0].value;
-
-        console.log($(this));
-
-        
+       
         value++;
         if(!max || value <= max) {
           el[0].value = value++;
@@ -313,7 +310,7 @@
    $(this).find(".right").toggleClass("ti-plus ti-minus");
  });
 
- if ($('.new_arrival_iner').length > 0) {
+ if ($('.new_arrival_iner_').length > 0) {
   var containerEl = document.querySelector('.new_arrival_iner');
   var mixer = mixitup(containerEl);
  }
@@ -338,7 +335,7 @@ $(document).on("click",".input-number-decrement", function(event) {
         $('#'+cart_prod_id+' input').val( newVal );
         
         var precio = $('#precio-'+cart_prod_id).attr('rel');
-        console.log( precio );
+        //console.log( precio );
         var precio_cantidad = precio*newVal;
         $('#total-'+cart_prod_id).html( precio_cantidad );
 
@@ -375,7 +372,7 @@ $(document).on("click",".input-number-increment", function(event) {
     $('#'+cart_prod_id+' input').val( newVal );
 
     var precio = $('#precio-'+cart_prod_id).attr('rel');
-    console.log( precio );
+    //console.log( precio );
     var precio_cantidad = precio*newVal;
     $('#total-'+cart_prod_id).html( precio_cantidad );
 

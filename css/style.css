@@ -8368,6 +8368,15 @@ background-color: #31B404;
 
 }
 
+.p_star .placeholder {
+    top: 40%;
+    left: 0px;
+}
+
+.confirmation_part .order_details_iner {
+    text-transform: none;
+}
+
 @media (max-width: 991px) {
     .table td, .table th {
         padding: 0rem;

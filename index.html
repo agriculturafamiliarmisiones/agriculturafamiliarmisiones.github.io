@@ -741,12 +741,14 @@
                                 $('html, body').animate({ scrollTop : 0 }, 1000);
 
                             } else {
+                                $( "#confirmar-pedido-loading" ).hide();
                                 $( "#confirmar-pedido" ).show();
                                 alert("Se produjo un error, por favor intente nuevamente!");
                             }
                         },
                         error: function (request,error) {
                             // Esta función de devolución de llamada se activará en una acción fallida
+                            $( "#confirmar-pedido-loading" ).hide();s
                             $( "#confirmar-pedido" ).show();
                             alert('Se produjo un error de red, por favor intente nuevamente!');
                         }

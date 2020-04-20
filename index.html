@@ -219,10 +219,11 @@
                                 <td></td>
                                 <td></td>
                                 <td>
-                                    <h5>Envio a domicilio</h5>
+                                    <h5>Forma de entrega</h5>
                                 </td>
                                 <td>
-                                    <input type="checkbox" id="envio" name="envio" value="1" checked> $<span id="envio">100</span>
+                                    <input type="radio" id="envio" name="envio" value="100" checked><label>A domicilio $100</label><br>
+                                    <input type="radio" id="enviogratis" name="envio" value="0"><label>Retiro en posta $0</label>
                                 </td>
                             </tr>
                             <tr>
@@ -557,7 +558,7 @@
                 $('#subtotal').html( subtotal );
 
                 var total = subtotal;
-                if ($('#envio').is(':checked')) {
+                if ($('#envio').is(':checked')) { 
                     total = total + 100;
                 }
                 $('#total').html( total );
@@ -568,7 +569,8 @@
             });
 
 
-            $("#envio").change(function () {
+            //$("#envio").change(function () {
+            $(':radio[name="envio"]').change(function() {
                 var subtotal = 0;
                 $("#lista-compra tbody tr").each(function (index) {
                     var tr_id = $(this).attr('id').replace('id-','');
@@ -579,9 +581,12 @@
                 });
                 $('#subtotal').html( subtotal );
                 //
+                $('#costoenvio').val( 0 );
+                //
                 var total = subtotal;
                 if ($('#envio').is(':checked')) {
                     total = total + 100;
+                    $('#costoenvio').val( 100 );
                 }
                 $('#total').html( total );
             }).change();
@@ -706,7 +711,7 @@
 
                     $.ajax({
                         type: "POST",
-                        url: "http://localhost/tienda/confirmar/",
+                        url: "http://estudiantedelinterior.com/agrifam/confirmar/",
                         data: $('.contact_form').serialize(),
                         dataType : 'json',
                         beforeSend: function() {
@@ -717,6 +722,16 @@
                         },
                         success: function (result) {
                             if(!result.error) {
+
+                                $('#productos').val( 0 );
+                                $('body').append('<style>.main_menu .cart i:after {content: "0";}</style>');
+                                $('.single_product li').remove();
+                                $('#lista-compra tbody tr ').remove();
+                                $('#list li').remove();
+                                $('#list_2 li').remove();                                
+                                $('#subtotal').html( 0 );
+                                $('#costoenvio').val( 100 );
+                                $('#total').html( 0 );
 
                                 $( "#confirmar-pedido-loading" ).hide();
                                 $( ".checkout_area" ).hide();

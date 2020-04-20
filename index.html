@@ -707,6 +707,7 @@
                 bValid = bValid && checkLength( direccion, "direccion", 3, 100 );
 
                 if ( bValid ) {
+                    $( "#confirmar-pedido" ).hide();
                     $( "#confirmar-pedido-loading" ).show();
 
                     $.ajax({
@@ -740,11 +741,13 @@
                                 $('html, body').animate({ scrollTop : 0 }, 1000);
 
                             } else {
-                                alert("Se produjo un error de red, por favor intente nuevamente!");
+                                $( "#confirmar-pedido" ).show();
+                                alert("Se produjo un error, por favor intente nuevamente!");
                             }
                         },
                         error: function (request,error) {
-                            // Esta función de devolución de llamada se activará en una acción fallida              
+                            // Esta función de devolución de llamada se activará en una acción fallida
+                            $( "#confirmar-pedido" ).show();
                             alert('Se produjo un error de red, por favor intente nuevamente!');
                         }
                     });

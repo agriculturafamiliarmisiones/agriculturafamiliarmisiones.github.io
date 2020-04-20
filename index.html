@@ -118,6 +118,7 @@
     <!-- free shipping here -->
     <section class="shipping_details section_padding">
         <div class="container">
+
             <div class="row">
                 <div class="col-6 col-lg-3 col-sm-6">
                     <div class="single_shopping_details">
@@ -287,13 +288,17 @@
                                 <span class="placeholder"></span>
                             </div>
                             <div class="col-md-6 form-group p_star">
-                                <input type="text" class="form-control" id="maps" name="maps" />
-                            </div>
-                            <div class="col-md-12">
-                                <div class="alert alert-danger alert-dismissible" style="display: none">
-                                    <h4><i class="icon fa fa-ban"></i> Error!</h4>
-                                    <span id="alert-content"></span>
-                                </div>
+                                <!-- Google map -->
+                                <div id="map"></div>
+                                <!-- Display geolocation data -->
+                                <input type="hidden" class="form-control" id="maps" name="maps" />
+                                <ul class="geo-data" style="display: none;">
+                                    <li>Full Address: <span id="location"></span></li>
+                                    <li>Postal Code: <span id="postal_code"></span></li>
+                                    <li>Country: <span id="country"></span></li>
+                                    <li>Latitude: <span id="lat"></span></li>
+                                    <li>Longitude: <span id="lon"></span></li>
+                                </ul>                                
                             </div>
                         </form>
                     </div>
@@ -303,10 +308,17 @@
                             <h2>Tu orden</h2>
                             <ul class="list" id="list"></ul>
                             <ul class="list list_2" id="list_2"></ul>
-                            <blockquote class="generic-blockquote" id="confirmar-pedido-loading">
+                            <blockquote class="generic-blockquote" id="confirmar-pedido-loading" style="display: none;">
                                 <img src="img/circle-ball.gif"> Cargando su pedido.<br>Espere un momento por favor.
                             </blockquote>
+
+                            <div class="alert alert-danger alert-dismissible" style="display: none">
+                                <h4><i class="icon fa fa-ban"></i> Error!</h4>
+                                <span id="alert-content"></span>
+                            </div>
+
                             <a class="btn_3" href="#" id="confirmar-pedido"> CONFIRMAR PEDIDO</a>
+                         
                         </div>
                     </div>
                 </div>
@@ -393,6 +405,9 @@
     </footer>
     <!--::footer_part end::-->
 
+    <script src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyAJee90YnGpXnV1iu7iL31n7UzG2xxdxRY&callback=initMap" async defer></script>
+
+
     <!-- jquery plugins here-->
     <script src="js/jquery-1.12.1.min.js"></script>
     <!-- popper js -->
@@ -422,7 +437,6 @@
 
     <Link rel = "stylesheet" href = "// code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
     <Script src = "//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
-
 
     <script type="text/javascript">
         
@@ -661,7 +675,6 @@
             
             $( "#confirmar-pedido" ).click(function() {
 
-                $( "#confirmar-pedido-loading" ).show();
                 $( ".alert-danger" ).hide();
 
                 var compra = $( "#compra" ),
@@ -689,7 +702,8 @@
                 bValid = bValid && checkLength( direccion, "direccion", 3, 100 );
 
                 if ( bValid ) {
-                    
+                    $( "#confirmar-pedido-loading" ).show();
+
                     $.ajax({
                         type: "POST",
                         url: "http://localhost/tienda/confirmar/",
@@ -707,6 +721,8 @@
                                 $( "#confirmar-pedido-loading" ).hide();
                                 $( ".checkout_area" ).hide();
                                 $( ".confirmation_part" ).show();
+
+                                $('html, body').animate({ scrollTop : 0 }, 1000);
 
                             } else {
                                 alert("Se produjo un error de red, por favor intente nuevamente!");
@@ -730,7 +746,6 @@
         });
 
     </script>
-
 
 </body>
 </html>
